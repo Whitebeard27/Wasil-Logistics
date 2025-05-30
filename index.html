@@ -2,41 +2,153 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>واصل لوجستيك - قطر</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: 'Cairo', sans-serif; background: #f8fafc; color: #1e293b; }
-    .gradient-text { background: linear-gradient(90deg, #2563eb, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .service-card:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 12px 20px rgba(34,197,94,0.12); transition: all 0.3s; }
-    .counter { font-size:2.2rem; color:#22c55e; font-weight:bold; }
-    .floating-btn, .ai-btn { position: fixed; left: 16px; z-index: 999; }
-    .floating-btn { bottom: 16px; }
-    .ai-btn { bottom: 70px; background: #2563eb; color: #fff; border-radius: 999px; width: 130px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: bold; box-shadow: 0 4px 16px #0002; cursor: pointer; transition: background 0.2s; gap: 0.5rem; border: none; }
-    .ai-btn:hover { background: #22c55e; }
-    .contact-icon { width: 24px; height: 24px; }
-    .chatbot-window { position: fixed; left: 16px; bottom: 120px; z-index: 1000; width: 320px; max-width: 95vw; background: #fff; border-radius: 1rem; box-shadow: 0 8px 32px #0004; overflow: hidden; display: none; flex-direction: column; }
-    .chatbot-header { background: linear-gradient(90deg, #2563eb, #22c55e); color: #fff; padding: 1rem; font-weight: bold; font-size: 1.1rem; }
-    .chatbot-messages { padding: 1rem; height: 200px; overflow-y: auto; font-size: 1rem; }
-    .chatbot-input { display: flex; border-top: 1px solid #eee; }
-    .chatbot-input input { flex: 1; border: none; padding: 0.75rem; font-size: 1rem; outline: none; }
-    .chatbot-input button { background: #22c55e; color: #fff; border: none; padding: 0 1.5rem; font-size: 1.2rem; cursor: pointer; }
-    .marquee { width: 100vw; overflow: hidden; background: linear-gradient(90deg, #e0f2fe 0%, #bbf7d0 100%); color: #2563eb; font-weight: bold; font-size: 1.1rem; white-space: nowrap; box-shadow: 0 2px 16px #0001; }
-    .marquee span { display: inline-block; padding-left: 100vw; animation: marquee 18s linear infinite; }
-    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100vw); } }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, #2563eb, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .service-card:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 12px 20px rgba(34, 197, 94, 0.12);
+      transition: all 0.3s;
+    }
+    .counter {
+      font-size: 2.2rem;
+      color: #22c55e;
+      font-weight: bold;
+    }
+    .floating-btn,
+    .ai-btn {
+      position: fixed;
+      left: 16px;
+      z-index: 999;
+    }
+    .floating-btn {
+      bottom: 16px;
+    }
+    .ai-btn {
+      bottom: 70px;
+      background: #2563eb;
+      color: #fff;
+      border-radius: 999px;
+      width: 130px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: bold;
+      box-shadow: 0 4px 16px #0002;
+      cursor: pointer;
+      transition: background 0.2s;
+      gap: 0.5rem;
+      border: none;
+    }
+    .ai-btn:hover {
+      background: #22c55e;
+    }
+    .contact-icon {
+      width: 24px;
+      height: 24px;
+    }
+    .chatbot-window {
+      position: fixed;
+      left: 16px;
+      bottom: 120px;
+      z-index: 1000;
+      width: 320px;
+      max-width: 95vw;
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 8px 32px #0004;
+      overflow: hidden;
+      display: none;
+      flex-direction: column;
+    }
+    .chatbot-header {
+      background: linear-gradient(90deg, #2563eb, #22c55e);
+      color: #fff;
+      padding: 1rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    .chatbot-messages {
+      padding: 1rem;
+      height: 200px;
+      overflow-y: auto;
+      font-size: 1rem;
+    }
+    .chatbot-input {
+      display: flex;
+      border-top: 1px solid #eee;
+    }
+    .chatbot-input input {
+      flex: 1;
+      border: none;
+      padding: 0.75rem;
+      font-size: 1rem;
+      outline: none;
+    }
+    .chatbot-input button {
+      background: #22c55e;
+      color: #fff;
+      border: none;
+      padding: 0 1.5rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
     @media (max-width: 640px) {
-      .contact-icon { width: 18px; height: 18px; }
-      .ai-btn { width: 90px; height: 32px; font-size: 0.85rem; }
+      .contact-icon {
+        width: 18px;
+        height: 18px;
+      }
+      .ai-btn {
+        width: 90px;
+        height: 32px;
+        font-size: 0.85rem;
+      }
+    }
+    .marquee {
+      width: 100vw;
+      overflow: hidden;
+      background: linear-gradient(90deg, #e0f2fe 0%, #bbf7d0 100%);
+      color: #2563eb;
+      font-weight: bold;
+      font-size: 1.1rem;
+      white-space: nowrap;
+      box-shadow: 0 2px 16px #0001;
+    }
+    .marquee span {
+      display: inline-block;
+      padding-left: 100vw;
+      animation: marquee 18s linear infinite;
+    }
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100vw);
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- شريط عرض خاص لأول شحنة مع هايبرلينك -->
+  <!-- شريط عرض خاص لأول شحنة مع رابط -->
   <div class="marquee">
     <span>
-      🚚 <a href="offers.html" style="color:#2563eb;text-decoration:underline;font-weight:bold;" target="_blank">العرض الخاص لأول شحنة</a>: خصم 15% على أول شحنة لك مع واصل لوجستيك! | خصومات للشركات والمتاجر | دعم فني 24/7 | حلول شحن ذكي وحديث في قطر 🚀
+      🚚 <a href="offers.html" target="_blank" style="color:#2563eb; text-decoration: underline; font-weight: bold;">العرض الخاص لأول شحنة</a>: خصم 15% على أول شحنة لك مع واصل لوجستيك! | خصومات للشركات والمتاجر | دعم فني 24/7 | حلول شحن ذكي وحديث في قطر 🚀
     </span>
   </div>
 
@@ -65,7 +177,6 @@
       </div>
       <a href="#contact" class="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition">تواصل معنا الآن</a>
       <script>
-        // عداد شحنات يومي يبدأ من 1 ويزيد 2 كل ساعة
         function updateDailyShipments() {
           const now = new Date();
           const hour = now.getHours();
@@ -73,7 +184,7 @@
           document.getElementById('dailyShipments').textContent = shipments;
         }
         updateDailyShipments();
-        setInterval(updateDailyShipments, 60 * 1000);
+        setInterval(updateDailyShipments, 60000);
       </script>
     </div>
   </section>
@@ -102,19 +213,16 @@
     <div class="container mx-auto px-4 text-center">
       <h3 class="text-3xl font-semibold text-green-800 mb-10">خدماتنا</h3>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- بطاقة فارغة 1 -->
         <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition service-card">
           <div class="h-40 bg-white rounded-md border border-dashed border-blue-300 flex items-center justify-center">
             <span class="text-gray-400">أضف خدمة هنا</span>
           </div>
         </div>
-        <!-- بطاقة فارغة 2 -->
         <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition service-card">
           <div class="h-40 bg-white rounded-md border border-dashed border-blue-300 flex items-center justify-center">
             <span class="text-gray-400">أضف خدمة هنا</span>
           </div>
         </div>
-        <!-- بطاقة فارغة 3 -->
         <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition service-card">
           <div class="h-40 bg-white rounded-md border border-dashed border-blue-300 flex items-center justify-center">
             <span class="text-gray-400">أضف خدمة هنا</span>
@@ -217,7 +325,10 @@
       if(msg.includes("خدمة") || msg.includes("خدمات")) reply = "نقدم شحن بري، بحري، جوي، وحلول ذكية.";
       if(msg.includes("سعر") || msg.includes("عرض")) reply = "لطلب عرض سعر استخدم نموذج التواصل.";
       if(msg.includes("رقم") || msg.includes("تواصل")) reply = "رقمنا: +97471161164";
-      setTimeout(()=>{msgs.innerHTML += `<div style="text-align:left;margin:8px 0;color:#22c55e;"><b>Smart Assist:</b> ${reply}</div>`; msgs.scrollTop = msgs.scrollHeight;}, 600);
+      setTimeout(() => {
+        msgs.innerHTML += `<div style="text-align:left;margin:8px 0;color:#22c55e;"><b>Smart Assist:</b> ${reply}</div>`;
+        msgs.scrollTop = msgs.scrollHeight;
+      }, 600);
       input.value = "";
     }
   </script>
