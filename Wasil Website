@@ -1,4 +1,240 @@
-index.html
-services.html
-track.html
-contact.html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>واصل لوجستيك - قطر</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Cairo', sans-serif; background: #f8fafc; color: #1e293b; }
+    .gradient-text { background: linear-gradient(90deg, #2563eb, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .main-nav { background: #fff; border-radius: 999px; box-shadow: 0 2px 16px #0001; padding: 0.5rem 1.5rem; margin-top: 1rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+    .main-nav a { font-weight: 700; color: #2563eb; transition: color 0.2s; }
+    .main-nav a:hover { color: #22c55e; }
+    .feature-icon { width: 32px; height: 32px; }
+    .logo-logistics { width: 54px; height: 54px; }
+    @media (max-width: 640px) {
+      .main-nav { gap: 1rem; padding: 0.5rem; }
+      .logo-logistics { width: 38px; height: 38px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط العروض -->
+  <div class="w-full bg-gradient-to-l from-blue-100 to-green-100 py-2 text-center shadow">
+    <span class="text-blue-900 font-bold">🚚 خصم 15% على أول شحنة لك مع واصل لوجستيك! | تتبع شحنتك لحظياً | دعم فني 24/7 | حلول شحن حديثة في قطر 🚀</span>
+  </div>
+
+  <!-- رأس الصفحة: شعار لوجستي حديث -->
+  <header class="relative z-30">
+    <div class="container mx-auto flex flex-row-reverse items-center justify-between py-4 px-4">
+      <div class="flex items-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/2921/2921822.png" alt="شعار لوجستي" class="logo-logistics ml-2" />
+        <span class="text-2xl font-bold text-green-900">واصل لوجستيك</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- القائمة الرئيسية -->
+  <nav class="main-nav mx-auto">
+    <a href="#home">الرئيسية</a>
+    <a href="#track">تتبع شحنتك</a>
+    <a href="#features">المزايا</a>
+    <a href="#about">من نحن</a>
+    <a href="#services">خدماتنا</a>
+    <a href="#contact">تواصل معنا</a>
+  </nav>
+
+  <!-- واجهة الموقع -->
+  <section id="home" class="text-center py-12 md:py-16 relative overflow-hidden px-4" style="background: linear-gradient(rgba(0,0,0,0.45),rgba(37,99,235,0.10)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center;">
+    <div class="container mx-auto max-w-2xl relative z-10 flex flex-col items-center justify-center">
+      <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80" alt="سفينة حاويات لوجستية" class="mx-auto rounded-2xl shadow-lg mb-4 w-full max-w-lg" style="border: 4px solid #fff;" />
+      <h2 class="text-4xl md:text-5xl font-bold mb-3 gradient-text" style="text-shadow:0 3px 16px #000a;">حلول شحن لوجستية متكاملة</h2>
+      <p class="text-lg md:text-xl mb-5 text-white" style="text-shadow:0 2px 8px #0008;">نوصلك للعالم... جوي، بحري، بري، تخليص جمركي، تخزين وأكثر</p>
+      <a href="#contact" class="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition font-bold text-lg">تواصل معنا الآن</a>
+    </div>
+  </section>
+
+  <!-- تتبع شحنتك -->
+  <section id="track" class="py-8 bg-white w-full flex justify-center">
+    <div class="container mx-auto px-4 max-w-xl text-center">
+      <h3 class="text-2xl font-bold mb-4 gradient-text">تتبع شحنتك</h3>
+      <form class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <input type="text" placeholder="أدخل رقم الشحنة" class="border rounded-lg px-4 py-2 flex-1 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">تتبع الآن</button>
+      </form>
+      <p class="text-sm text-gray-500 mt-2">خدمة التتبع متوفرة 24/7 لجميع أنواع الشحنات</p>
+    </div>
+  </section>
+
+  <!-- المزايا -->
+  <section id="features" class="py-8 bg-blue-50 w-full flex justify-center">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-2xl font-bold mb-6 gradient-text">المزايا</h3>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 justify-center">
+        <div class="flex flex-col items-center">
+          <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" class="feature-icon mb-2" alt="تتبع ذكي" />
+          <span class="font-bold text-green-800">تتبع لحظي</span>
+          <span class="text-gray-600 text-sm">تتبع مباشر لكل شحنتك من الباب للباب.</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="https://cdn-icons-png.flaticon.com/512/190/190406.png" class="feature-icon mb-2" alt="دعم فني" />
+          <span class="font-bold text-green-800">دعم فني 24/7</span>
+          <span class="text-gray-600 text-sm">فريقنا متواجد دائمًا لخدمتك والإجابة على استفساراتك.</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="https://cdn-icons-png.flaticon.com/512/190/190422.png" class="feature-icon mb-2" alt="أسعار تنافسية" />
+          <span class="font-bold text-green-800">أسعار تنافسية</span>
+          <span class="text-gray-600 text-sm">أفضل أسعار الشحن في قطر والخليج مع جودة عالية.</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png" class="feature-icon mb-2" alt="حلول متكاملة" />
+          <span class="font-bold text-green-800">حلول متكاملة</span>
+          <span class="text-gray-600 text-sm">شحن، تخزين، تخليص جمركي، حلول للشركات والمتاجر.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- من نحن -->
+  <section id="about" class="py-10 bg-white w-full flex justify-center">
+    <div class="container mx-auto px-4 flex flex-col items-center justify-center">
+      <h2 class="text-2xl md:text-3xl font-bold gradient-text mb-3 text-center">من نحن</h2>
+      <p class="text-lg text-gray-700 mb-4 text-center max-w-xl">
+        <b>واصل لوجستيك</b> شركة قطرية متخصصة في حلول الشحن الذكي واللوجستيات الحديثة. نستخدم أحدث التقنيات لنقدم لك أسرع وأدق خدمة شحن وتوصيل داخل قطر ودول الخليج والعالم، مع تغطية شاملة ودعم متواصل 24/7.
+      </p>
+      <ul class="list-disc pr-6 text-gray-600 text-base text-center mx-auto" style="display:inline-block;text-align:right;">
+        <li>شحن بري، بحري، جوي، وتخزين احترافي</li>
+        <li>تتبع ذكي، تقارير فورية، وتوصيات مخصصة لكل عميل</li>
+        <li>فريق عمل محترف وخدمة عملاء متواصلة</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- خدماتنا -->
+  <section id="services" class="py-10 bg-white w-full flex justify-center">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-3xl font-semibold text-green-800 mb-8">خدماتنا</h3>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 justify-center">
+        <!-- شحن جوي -->
+        <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition service-card flex flex-col items-center">
+          <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=600&q=80" alt="شحن جوي" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <h4 class="text-xl font-bold mb-1">الشحن الجوي</h4>
+          <p class="text-gray-600 mb-2">طائرات شحن لوجستية حديثة لنقل سريع ودولي مع تتبع لحظي.</p>
+        </div>
+        <!-- شحن بحري -->
+        <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition service-card flex flex-col items-center">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="شحن بحري" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <h4 class="text-xl font-bold mb-1">الشحن البحري</h4>
+          <p class="text-gray-600 mb-2">سفن حاويات حديثة لنقل البضائع بأمان واحترافية حول العالم.</p>
+        </div>
+        <!-- شحن بري -->
+        <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition service-card flex flex-col items-center">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="شحن بري" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <h4 class="text-xl font-bold mb-1">الشحن البري</h4>
+          <p class="text-gray-600 mb-2">شاحنات نقل بضائع وكونتينرات بين المدن ودول الخليج بأمان وسرعة.</p>
+        </div>
+        <!-- التخليص الجمركي -->
+        <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition service-card flex flex-col items-center">
+          <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="تخليص جمركي" class="w-full h-32 object-cover rounded-lg mb-3" />
+          <h4 class="text-xl font-bold mb-1">التخليص الجمركي</h4>
+          <p class="text-gray-600 mb-2">تخليص سريع واحترافي لكل أنواع الشحنات، خبرة في اللوائح المحلية والدولية.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 justify-center mt-8">
+        <!-- التخزين الذكي -->
+        <div class="bg-green-50 rounded-xl shadow p-6 flex flex-col items-center">
+          <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" class="w-full h-28 object-cover rounded-lg mb-2" />
+          <h4 class="font-bold mb-1 text-green-800">التخزين الذكي</h4>
+          <p class="text-gray-600 text-sm">مخازن حديثة، أنظمة أمان متطورة، إدارة مخزون دقيقة.</p>
+        </div>
+        <!-- حلول لوجستية متكاملة -->
+        <div class="bg-green-50 rounded-xl shadow p-6 flex flex-col items-center">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80" class="w-full h-28 object-cover rounded-lg mb-2" />
+          <h4 class="font-bold mb-1 text-green-800">حلول لوجستية متكاملة</h4>
+          <p class="text-gray-600 text-sm">إدارة سلسلة الإمداد، حلول للشركات والمتاجر الإلكترونية.</p>
+        </div>
+        <!-- توصيل سريع -->
+        <div class="bg-green-50 rounded-xl shadow p-6 flex flex-col items-center">
+          <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=600&q=80" class="w-full h-28 object-cover rounded-lg mb-2" />
+          <h4 class="font-bold mb-1 text-green-800">توصيل سريع</h4>
+          <p class="text-gray-600 text-sm">خدمة توصيل محلي ودولي بسرعة وموثوقية عالية.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- تواصل معنا -->
+  <section id="contact" class="py-10 bg-green-50 w-full flex justify-center">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-semibold text-blue-800 mb-4">تواصل معنا</h3>
+      <p class="text-lg text-gray-700 mb-2">للتواصل أو الاستفسارات، اتصل بنا على:</p>
+      <p class="text-2xl text-green-800 font-bold mb-4">
+        <a href="tel:+97471161164" class="hover:underline">+97471161164</a>
+      </p>
+      <p class="text-lg text-gray-700 mb-2">العنوان: الريان - قطر</p>
+      <a href="https://wa.me/97471161164" target="_blank" class="inline-flex items-center gap-2 bg-green-600 text-white px-5 py-2 rounded-full font-bold shadow hover:bg-green-700 transition mt-4 mb-6">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-6 h-6" alt="واتساب" />
+        تواصل واتساب مباشر
+      </a>
+      <a href="https://maps.app.goo.gl/RqanSiSy4goiwc1H9" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-full font-bold shadow hover:bg-blue-700 transition mt-4 mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 12.414a4 4 0 10-1.414 1.414l4.243 4.243a1 1 0 001.414-1.414z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        موقع الشركة على الخريطة
+      </a>
+      <div class="my-6">
+        <iframe 
+          src="https://www.google.com/maps?q=25.252001,51.429810&hl=ar&z=15&output=embed" 
+          width="100%" height="320" style="border-radius:1rem;box-shadow:0 2px 12px #0001;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="text-center mt-2">
+          <a href="https://maps.app.goo.gl/RqanSiSy4goiwc1H9" target="_blank" class="text-blue-700 font-bold underline">افتح الموقع على Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- آراء العملاء -->
+  <section id="feedback" class="py-10 bg-white w-full flex justify-center">
+    <div class="container mx-auto px-4 max-w-2xl text-center">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6 gradient-text">آراء عملائنا</h2>
+      <div class="bg-blue-50 rounded-xl shadow p-8 mb-6 text-center">
+        <p class="text-lg text-gray-700 mb-1">"خدمة ممتازة وسرعة في الشحن والتخليص. شكراً لفريق واصل لوجستيك!"</p>
+        <span class="text-green-700 font-semibold text-sm">محمد الكعبي - الدوحة</span>
+      </div>
+      <div class="bg-blue-50 rounded-xl shadow p-8 mb-6 text-center">
+        <p class="text-lg text-gray-700 mb-1">"تتبع الشحنة كان دقيق والدعم الفني متواجد 24 ساعة."</p>
+        <span class="text-green-700 font-semibold text-sm">سارة المهندي - الريان</span>
+      </div>
+      <!-- فورم رأي جديد -->
+      <form id="opinionForm" class="bg-white rounded-xl shadow p-6 flex flex-col gap-4 text-center border border-blue-100">
+        <h3 class="text-lg font-bold mb-2 text-blue-700">شاركنا رأيك</h3>
+        <input type="text" id="opinionName" placeholder="اسمك (اختياري)" class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+        <textarea id="opinionMsg" required placeholder="اكتب رأيك أو تجربتك..." class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200"></textarea>
+        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">إرسال</button>
+        <div id="opinionResult" class="mt-2 text-green-700 font-bold"></div>
+      </form>
+      <script>
+        document.getElementById('opinionForm').onsubmit = function(e){
+          e.preventDefault();
+          var name = document.getElementById('opinionName').value.trim();
+          var msg = document.getElementById('opinionMsg').value.trim();
+          var waMsg = encodeURIComponent((name ? "الاسم: "+name+"\n" : "") + "الرأي: "+msg);
+          window.open("https://wa.me/97471161164?text="+waMsg, "_blank");
+          document.getElementById('opinionResult').innerHTML = "✅ سيتم تحويلك للواتساب لإرسال رأيك مباشرة.";
+        }
+      </script>
+    </div>
+  </section>
+
+  <footer class="bg-blue-200 text-center py-4 mt-8">
+    <p class="text-gray-700">&copy; 2025 واصل لوجستيك - جميع الحقوق محفوظة</p>
+    <div class="text-xs text-gray-500 mt-1">تم التطوير بأحدث التقنيات والابتكارات اللوجستية</div>
+  </footer>
+
+</body>
+</html>
