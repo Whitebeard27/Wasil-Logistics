@@ -1,90 +1,79 @@
 <!DOCTYPE html>
-<html lang="ar">
-<head>
+<html lang="ar" dir="rtl">
+  <head>
     <meta charset="UTF-8" />
-    <title>واصل من الطبيعة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>واصل لوجستيك</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
-        body {
-            font-family: 'Cairo', sans-serif;
-            direction: rtl;
-            background-color: #e6f2f7;
-            color: #1a3d4c;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background: linear-gradient(90deg, #2e8b57, #3a9ad9);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-        nav {
-            background-color: #1a3d4c;
-            text-align: center;
-        }
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 10px 0;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-        nav ul li a {
-            color: #a3d5ff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-            font-size: 1.1em;
-        }
-        nav ul li a:hover {
-            color: #ffffff;
-        }
-        section.intro {
-            padding: 30px 20px;
-            text-align: center;
-            max-width: 700px;
-            margin: 30px auto;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        footer {
-            background: linear-gradient(90deg, #3a9ad9, #2e8b57);
-            color: white;
-            text-align: center;
-            padding: 15px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            font-size: 0.9em;
-        }
+      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap');
+      body {
+        font-family: 'Cairo', sans-serif;
+      }
     </style>
-</head>
-<body>
-    <header>
-        <h1>واصل من الطبيعة</h1>
-        <p>شريكك الموثوق في خدمات الشحن.</p>
+  </head>
+
+  <body class="bg-white text-gray-800">
+
+    <!-- رأس الصفحة -->
+    <header class="bg-gradient-to-r from-green-100 to-blue-100 shadow p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-green-900">واصل لوجستيك</h1>
+        <nav class="space-x-4 space-x-reverse">
+          <a href="#" class="text-green-900 hover:underline font-medium">الرئيسية</a>
+          <a href="#services" class="text-green-900 hover:underline font-medium">خدماتنا</a>
+          <a href="#contact" class="text-green-900 hover:underline font-medium">تواصل معنا</a>
+        </nav>
+      </div>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#">الرئيسية</a></li>
-            <li><a href="#">الخدمات</a></li>
-            <li><a href="#">تتبع الشحنات</a></li>
-            <li><a href="#">اتصل بنا</a></li>
-        </ul>
-    </nav>
-
-    <section class="intro">
-        <h2>شحن سريع وموثوق وصديق للبيئة</h2>
-        <p>نقدم حلولًا لوجستية سلسة مع التزام بالاستدامة.</p>
-        <p>شريكك الموثوق في خدمات الشحن العالمية.</p>
+    <!-- بانر ترحيبي -->
+    <section class="text-center py-20 bg-green-50">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl md:text-5xl font-bold text-blue-800 mb-6">من الطبيعة إلى باب بيتك</h2>
+        <p class="text-lg text-gray-700 mb-4">حلول شحن موثوقة وسريعة في كل أنحاء قطر</p>
+        <a href="#contact" class="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition">تواصل معنا الآن</a>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; 2025 واصل من الطبيعة. جميع الحقوق محفوظة.</p>
+    <!-- خدماتنا -->
+    <section id="services" class="py-16 bg-white">
+      <div class="container mx-auto px-4 text-center">
+        <h3 class="text-3xl font-semibold text-green-800 mb-10">خدماتنا</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- بطاقة فارغة 1 -->
+          <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition">
+            <div class="h-40 bg-white rounded-md border border-dashed border-blue-300 flex items-center justify-center">
+              <span class="text-gray-400">أضف خدمة هنا</span>
+            </div>
+          </div>
+
+          <!-- بطاقة فارغة 2 -->
+          <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition">
+            <div class="h-40 bg-white rounded-md border border-dashed border-blue-300 flex items-center justify-center">
+              <span class="text-gray-400">أضف خدمة هنا</span>
+            </div>
+          </div>
+
+          <!-- بطاقة فارغة 3 -->
+          <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition">
+            <div class="h-40 bg-white rounded-md border border-dashed border-blue-300 flex items-center justify-center">
+              <span class="text-gray-400">أضف خدمة هنا</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- تذييل -->
+    <footer id="contact" class="bg-blue-100 py-8 text-center">
+      <h4 class="text-xl font-semibold text-green-800 mb-2">تواصل معنا</h4>
+      <p class="text-lg text-gray-700 mb-1">واتساب / اتصال مباشر</p>
+      <p class="text-xl text-green-900 font-bold">+97433556419</p>
+      <p class="text-sm text-gray-600 mt-4">© 2025 واصل لوجستيك - جميع الحقوق محفوظة</p>
     </footer>
-</body>
+
+  </body>
 </html>
