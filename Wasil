@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>واصل لوجستيك - قطر</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family: 'Cairo', sans-serif; background: #f8fafc; color: #1e293b; }
+    .gradient-text { background: linear-gradient(90deg, #2563eb, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .service-card:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 12px 20px rgba(34,197,94,0.12); transition: all 0.3s; }
+    .counter { font-size:2.2rem; color:#22c55e; font-weight:bold; }
+    .floating-btn, .ai-btn { position: fixed; left: 16px; z-index: 999; }
+    .floating-btn { bottom: 16px; }
+    .ai-btn { bottom: 70px; background: #2563eb; color: #fff; border-radius: 999px; width: 130px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: bold; box-shadow: 0 4px 16px #0002; cursor: pointer; transition: background 0.2s; gap: 0.5rem; border: none; }
+    .ai-btn:hover { background: #22c55e; }
+    .contact-icon { width: 24px; height: 24px; }
+    .chatbot-window { position: fixed; left: 16px; bottom: 120px; z-index: 1000; width: 320px; max-width: 95vw; background: #fff; border-radius: 1rem; box-shadow: 0 8px 32px #0004; overflow: hidden; display: none; flex-direction: column; }
+    .chatbot-header { background: linear-gradient(90deg, #2563eb, #22c55e); color: #fff; padding: 1rem; font-weight: bold; font-size: 1.1rem; }
+    .chatbot-messages { padding: 1rem; height: 200px; overflow-y: auto; font-size: 1rem; }
+    .chatbot-input { display: flex; border-top: 1px solid #eee; }
+    .chatbot-input input { flex: 1; border: none; padding: 0.75rem; font-size: 1rem; outline: none; }
+    .chatbot-input button { background: #22c55e; color: #fff; border: none; padding: 0 1.5rem; font-size: 1.2rem; cursor: pointer; }
+    .marquee { width: 100vw; overflow: hidden; background: linear-gradient(90deg, #e0f2fe 0%, #bbf7d0 100%); color: #2563eb; font-weight: bold; font-size: 1.1rem; white-space: nowrap; box-shadow: 0 2px 16px #0001; }
+    .marquee span { display: inline-block; padding-left: 100vw; animation: marquee 18s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100vw); } }
+    @media (max-width: 640px) {
+      .contact-icon { width: 18px; height: 18px; }
+      .ai-btn { width: 90px; height: 32px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- شريط عرض خاص لأول شحنة مع هايبرلينك -->
+  <div class="marquee">
+    <span>
+      🚚 <a href="offers.html" style="color:#2563eb;text-decoration:underline;font-weight:bold;" target="_blank">العرض الخاص لأول شحنة</a>: خصم 15% على أول شحنة لك مع واصل لوجستيك! | خصومات للشركات والمتاجر | دعم فني 24/7 | حلول شحن ذكي وحديث في قطر 🚀
+    </span>
+  </div>
+
+  <!-- رأس الصفحة -->
+  <header class="bg-gradient-to-r from-green-200 to-blue-200 p-4 shadow">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      <h1 class="text-2xl font-bold text-green-900">واصل لوجستيك</h1>
+      <nav class="space-x-4 space-x-reverse mt-2 md:mt-0">
+        <a href="#" class="text-green-900 hover:underline font-medium">الرئيسية</a>
+        <a href="#services" class="text-green-900 hover:underline font-medium">خدماتنا</a>
+        <a href="#about" class="text-green-900 hover:underline font-medium">من نحن</a>
+        <a href="#feedback" class="text-green-900 hover:underline font-medium">اقتراحك</a>
+        <a href="#contact" class="text-green-900 hover:underline font-medium">تواصل معنا</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- بانر ترحيبي + عداد الشحنات اليومي -->
+  <section class="hero-bg text-center py-16 md:py-24 relative overflow-hidden px-4">
+    <div class="container mx-auto max-w-3xl relative z-10">
+      <h2 class="text-4xl md:text-5xl font-bold mb-4 gradient-text" style="text-shadow:0 3px 16px #000a;">من الطبيعة إلى باب بيتك</h2>
+      <p class="text-lg md:text-xl mb-6 text-white" style="text-shadow:0 2px 8px #0008;">حلول شحن موثوقة وسريعة في كل أنحاء قطر</p>
+      <div class="flex flex-col items-center mt-10 mb-6">
+        <div class="counter" id="dailyShipments">1</div>
+        <div class="text-base text-white font-semibold">عدد الشحنات التي تم تسليمها اليوم</div>
+      </div>
+      <a href="#contact" class="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition">تواصل معنا الآن</a>
+      <script>
+        // عداد شحنات يومي يبدأ من 1 ويزيد 2 كل ساعة
+        function updateDailyShipments() {
+          const now = new Date();
+          const hour = now.getHours();
+          const shipments = 1 + (hour * 2);
+          document.getElementById('dailyShipments').textContent = shipments;
+        }
+        updateDailyShipments();
+        setInterval(updateDailyShipments, 60 * 1000);
+      </script>
+    </div>
+  </section>
+
+  <!-- من نحن -->
+  <section id="about" class="py-12 bg-white">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row items-center gap-8">
+      <div class="flex-1 mb-8 md:mb-0">
+        <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=600&q=80" alt="شاحنة واصل" class="w-full max-w-xs mx-auto rounded-2xl shadow" />
+      </div>
+      <div class="flex-1">
+        <h2 class="text-2xl md:text-3xl font-bold gradient-text mb-3">من نحن</h2>
+        <p class="text-lg text-gray-700 mb-4">
+          <b>واصل لوجستيك</b> شركة قطرية متخصصة في حلول الشحن الذكي واللوجستيات الحديثة. نستخدم أحدث التقنيات لنقدم لك أسرع وأدق خدمة شحن وتوصيل داخل قطر ودول الخليج والعالم، مع تغطية شاملة ودعم متواصل 24/7.
+        </p>
+        <ul class="list-disc pr-6 text-gray-600 text-base">
+          <li>شحن بري، بحري، جوي، وحلول متكاملة للشركات والأفراد</li>
+          <li>تتبع ذكي، تقارير فورية، وتوصيات مخصصة لكل عميل</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- خدماتنا -->
+  <section id="services" class="py-16 bg-white">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-3xl font-semibold text-green-800 mb-10">خدماتنا</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- بطاقة فارغة 1 -->
+        <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition service-card">
+          <div class="h-40 bg-white rounded-md border border-dashed border-blue-300 flex items-center justify-center">
+            <span class="text-gray-400">أضف خدمة هنا</span>
+          </div>
+        </div>
+        <!-- بطاقة فارغة 2 -->
+        <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition service-card">
+          <div class="h-40 bg-white rounded-md border border-dashed border-blue-300 flex items-center justify-center">
+            <span class="text-gray-400">أضف خدمة هنا</span>
+          </div>
+        </div>
+        <!-- بطاقة فارغة 3 -->
+        <div class="bg-blue-50 rounded-xl shadow p-6 hover:shadow-lg transition service-card">
+          <div class="h-40 bg-white rounded-md border border-dashed border-blue-300 flex items-center justify-center">
+            <span class="text-gray-400">أضف خدمة هنا</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- فورمة اقتراحات ترسل للواتساب -->
+  <section id="feedback" class="py-10" style="background: linear-gradient(90deg, #2563eb22 0%, #22c55e22 100%);">
+    <div class="container mx-auto px-4 max-w-xl">
+      <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color:#194185;">شاركنا اقتراحك أو ملاحظتك</h2>
+      <form id="feedbackForm" class="bg-white rounded-xl shadow p-8 flex flex-col gap-5 text-center">
+        <input type="text" id="fbName" placeholder="اسمك (اختياري)" class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+        <textarea id="fbMsg" required placeholder="اكتب اقتراحك أو ملاحظتك هنا..." class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200"></textarea>
+        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">إرسال</button>
+        <div id="fbResult" class="mt-2 text-green-700 font-bold"></div>
+      </form>
+      <script>
+        document.getElementById('feedbackForm').onsubmit = function(e){
+          e.preventDefault();
+          var name = document.getElementById('fbName').value.trim();
+          var msg = document.getElementById('fbMsg').value.trim();
+          var waMsg = encodeURIComponent((name ? "الاسم: "+name+"\n" : "") + "الرسالة: "+msg);
+          window.open("https://wa.me/97471161164?text="+waMsg, "_blank");
+          document.getElementById('fbResult').innerHTML = "✅ سيتم تحويلك للواتساب لإرسال اقتراحك مباشرة.";
+        }
+      </script>
+    </div>
+  </section>
+
+  <!-- تواصل معنا مع خريطة Google Maps -->
+  <section id="contact" class="py-12 bg-green-50">
+    <div class="container mx-auto text-center">
+      <h3 class="text-3xl font-semibold text-blue-800 mb-4">تواصل معنا</h3>
+      <p class="text-lg text-gray-700 mb-2">للتواصل أو الاستفسارات، اتصل بنا على:</p>
+      <p class="text-2xl text-green-800 font-bold mb-4">
+        <a href="tel:+97471161164" class="hover:underline">+97471161164</a>
+      </p>
+      <p class="text-lg text-gray-700 mb-2">العنوان: الريان - قطر</p>
+      <a href="https://wa.me/97471161164" target="_blank" class="inline-flex items-center gap-2 bg-green-600 text-white px-5 py-2 rounded-full font-bold shadow hover:bg-green-700 transition mt-4 mb-6">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-6 h-6" alt="واتساب" />
+        تواصل واتساب مباشر
+      </a>
+      <a href="https://maps.app.goo.gl/RqanSiSy4goiwc1H9" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-full font-bold shadow hover:bg-blue-700 transition mt-4 mb-6">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 12.414a4 4 0 10-1.414 1.414l4.243 4.243a1 1 0 001.414-1.414z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        موقع الشركة على الخريطة
+      </a>
+      <div class="my-6">
+        <iframe 
+          src="https://www.google.com/maps?q=25.252001,51.429810&hl=ar&z=15&output=embed" 
+          width="100%" height="320" style="border-radius:1rem;box-shadow:0 2px 12px #0001;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+        <div class="text-center mt-2">
+          <a href="https://maps.app.goo.gl/RqanSiSy4goiwc1H9" target="_blank" class="text-blue-700 font-bold underline">افتح الموقع على Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- زر واتساب عائم -->
+  <a href="https://wa.me/97471161164" target="_blank"
+    class="floating-btn bg-green-500 hover:bg-green-600 text-white p-2 rounded-full shadow-lg flex items-center gap-2 animate-bounce">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-6 h-6" alt="واتساب" />
+  </a>
+
+  <!-- زر ذكاء اصطناعي عائم -->
+  <button class="ai-btn" id="botBtn" title="Smart Assist">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+    Smart Assist
+  </button>
+  <div class="chatbot-window" id="botWindow">
+    <div class="chatbot-header">Smart Assist</div>
+    <div class="chatbot-messages" id="botMsgs">
+      <div>👋 مرحبًا! أنا مساعدك الذكي.<br>اسألني عن الشحن أو الخدمات أو أي استفسار.</div>
+    </div>
+    <form class="chatbot-input" onsubmit="sendBotMsg(event)">
+      <input type="text" id="botInput" placeholder="اكتب سؤالك..." autocomplete="off" />
+      <button type="submit">إرسال</button>
+    </form>
+  </div>
+  <script>
+    document.getElementById('botBtn').onclick = function(){
+      let win = document.getElementById('botWindow');
+      win.style.display = win.style.display == 'flex' ? 'none' : 'flex';
+    }
+    function sendBotMsg(e){
+      e.preventDefault();
+      let input = document.getElementById('botInput');
+      let msg = input.value.trim();
+      if(!msg) return;
+      let msgs = document.getElementById('botMsgs');
+      msgs.innerHTML += `<div style="text-align:right;margin:8px 0;"><b>أنت:</b> ${msg}</div>`;
+      let reply = "عذراً، لم أفهم سؤالك. جرب مرة أخرى أو تواصل مع الدعم.";
+      if(msg.includes("شحنة") || msg.includes("تتبع")) reply = "يمكنك تتبع شحنتك عبر التواصل معنا أو استخدام رقم التتبع.";
+      if(msg.includes("خدمة") || msg.includes("خدمات")) reply = "نقدم شحن بري، بحري، جوي، وحلول ذكية.";
+      if(msg.includes("سعر") || msg.includes("عرض")) reply = "لطلب عرض سعر استخدم نموذج التواصل.";
+      if(msg.includes("رقم") || msg.includes("تواصل")) reply = "رقمنا: +97471161164";
+      setTimeout(()=>{msgs.innerHTML += `<div style="text-align:left;margin:8px 0;color:#22c55e;"><b>Smart Assist:</b> ${reply}</div>`; msgs.scrollTop = msgs.scrollHeight;}, 600);
+      input.value = "";
+    }
+  </script>
+
+  <footer class="bg-blue-200 text-center py-4 mt-8">
+    <p class="text-gray-700">&copy; 2025 واصل لوجستيك - جميع الحقوق محفوظة</p>
+  </footer>
+
+</body>
+</html>
