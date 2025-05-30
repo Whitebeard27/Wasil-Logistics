@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>واصل لوجستيك | حلول الشحن الذكية في قطر</title>
+  <title>واصل لوجستيك | الشحن الذكي في قطر</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -12,6 +12,16 @@
     .service-card:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 12px 20px rgba(34,197,94,0.12); transition: all 0.3s; }
     .floating-btn { position: fixed; left: 20px; bottom: 20px; z-index: 999; }
     input, textarea { direction: rtl; }
+    .chatbot-btn { position: fixed; right: 20px; bottom: 20px; z-index: 999; background: #2563eb; color: #fff; border-radius: 50%; width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 2rem; box-shadow: 0 4px 16px #0002; cursor: pointer; }
+    .chatbot-window { position: fixed; right: 20px; bottom: 90px; z-index: 1000; width: 320px; max-width: 90vw; background: #fff; border-radius: 1rem; box-shadow: 0 8px 32px #0004; overflow: hidden; display: none; flex-direction: column; }
+    .chatbot-header { background: linear-gradient(90deg, #2563eb, #22c55e); color: #fff; padding: 1rem; font-weight: bold; }
+    .chatbot-messages { padding: 1rem; height: 220px; overflow-y: auto; font-size: 1rem; }
+    .chatbot-input { display: flex; border-top: 1px solid #eee; }
+    .chatbot-input input { flex: 1; border: none; padding: 0.75rem; font-size: 1rem; outline: none; }
+    .chatbot-input button { background: #22c55e; color: #fff; border: none; padding: 0 1.5rem; font-size: 1.2rem; cursor: pointer; }
+    @media (max-width: 500px) {
+      .chatbot-window { width: 98vw; right: 1vw; }
+    }
   </style>
 </head>
 <body>
@@ -40,14 +50,14 @@
   <section id="home" class="py-16 md:py-24 bg-gradient-to-l from-green-50 to-blue-50 text-center relative overflow-hidden px-4">
     <div class="container mx-auto max-w-4xl relative z-10">
       <h2 class="text-4xl md:text-5xl font-extrabold gradient-text mb-6 leading-tight">حلول الشحن الذكية في قطر</h2>
-      <p class="text-lg md:text-xl text-gray-700 mb-8">شحن سريع، تتبع مباشر، دعم متواصل، وكل شيء بضغطة زر!</p>
+      <p class="text-lg md:text-xl text-gray-700 mb-8">شحن سريع، تتبع مباشر، دعم متواصل، وبوت ذكاء اصطناعي لخدمتك!</p>
       <a href="#quote" class="bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-700 transition">اطلب عرض سعر</a>
     </div>
     <div class="absolute top-0 left-0 w-72 h-72 bg-green-200 rounded-full opacity-30 -top-24 -left-24 blur-3xl"></div>
     <div class="absolute w-96 h-96 bg-blue-200 rounded-full opacity-20 -bottom-32 -right-32 blur-3xl"></div>
   </section>
 
-  <!-- تتبع شحنة -->
+  <!-- تتبع شحنة تفاعلي مع خريطة -->
   <section id="track" class="py-12 bg-white">
     <div class="container mx-auto max-w-lg px-4">
       <h2 class="text-2xl md:text-3xl font-bold gradient-text mb-6 text-center">تتبع شحنتك</h2>
@@ -56,15 +66,25 @@
         <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">تتبع الآن</button>
         <div id="trackResult" class="mt-4 text-green-700 font-bold min-h-[2rem]"></div>
       </form>
+      <div id="trackMap" class="mt-6 hidden">
+        <h3 class="font-semibold mb-2">موقع الشحنة الحالي:</h3>
+        <iframe id="mapFrame" width="100%" height="220" style="border-radius:1rem;box-shadow:0 2px 12px #0001;" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
       <script>
         document.getElementById('trackForm').onsubmit = function(e) {
           e.preventDefault();
           const num = document.getElementById('trackNumber').value.trim();
           const result = document.getElementById('trackResult');
+          const mapDiv = document.getElementById('trackMap');
+          const mapFrame = document.getElementById('mapFrame');
           if(num.length >= 6){
-            result.innerHTML = `تم استلام رقم التتبع <span class="text-green-900 font-bold">${num}</span>.<br>سيتم التواصل معك قريبًا حول حالة الشحنة.`;
+            result.innerHTML = `تم استلام رقم التتبع <span class="text-green-900 font-bold">${num}</span>.<br>شحنك الآن في الطريق!`;
+            mapDiv.style.display = 'block';
+            // موقع افتراضي (الريان شارع الشافي)
+            mapFrame.src = "https://maps.google.com/maps?q=25.2525,51.3885&z=16&output=embed";
           } else {
             result.innerHTML = `<span class="text-red-600 font-semibold">رقم التتبع غير صحيح.</span>`;
+            mapDiv.style.display = 'none';
           }
         }
       </script>
@@ -92,6 +112,40 @@
           <p class="text-gray-600">عقود شهرية للشركات والمتاجر، مع تقارير وتحليلات متقدمة.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- تقييم الخدمة الذكي -->
+  <section id="rate" class="py-12 bg-white">
+    <div class="container mx-auto px-4 max-w-lg">
+      <h2 class="text-2xl md:text-3xl font-bold gradient-text mb-6 text-center">قيّم تجربتك معنا</h2>
+      <form id="rateForm" class="bg-blue-50 rounded-xl shadow p-6 flex flex-col gap-5 text-center">
+        <label class="font-semibold">كيف تقيم الخدمة؟</label>
+        <div class="flex justify-center gap-2 text-2xl">
+          <span class="cursor-pointer" onclick="setRate(1)">⭐</span>
+          <span class="cursor-pointer" onclick="setRate(2)">⭐</span>
+          <span class="cursor-pointer" onclick="setRate(3)">⭐</span>
+          <span class="cursor-pointer" onclick="setRate(4)">⭐</span>
+          <span class="cursor-pointer" onclick="setRate(5)">⭐</span>
+        </div>
+        <input type="hidden" id="rateValue" value="0" />
+        <textarea required placeholder="اكتب تعليقك أو اقتراحك" class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200"></textarea>
+        <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">إرسال التقييم</button>
+        <div id="rateResult" class="mt-4 text-green-700 font-bold min-h-[2rem]"></div>
+      </form>
+      <script>
+        function setRate(val){
+          document.getElementById('rateValue').value = val;
+          let stars = document.querySelectorAll('#rateForm span');
+          stars.forEach((s,i)=>{ s.style.color = i<val ? '#22c55e' : '#bbb'; });
+        }
+        document.getElementById('rateForm').onsubmit = function(e){
+          e.preventDefault();
+          let val = document.getElementById('rateValue').value;
+          if(val==0){ document.getElementById('rateResult').innerHTML = "اختر عدد النجوم أولاً!"; return; }
+          document.getElementById('rateResult').innerHTML = "شكرًا لتقييمك! سيتم تحليل رأيك لتحسين الخدمة.";
+        }
+      </script>
     </div>
   </section>
 
@@ -126,7 +180,7 @@
       <div class="max-w-2xl mx-auto">
         <details class="mb-4 bg-white rounded shadow p-4">
           <summary class="font-semibold cursor-pointer">كيف أتتبع شحنتي؟</summary>
-          <p class="mt-2 text-gray-600">ادخل رقم التتبع في قسم "تتبع شحنة" وسيظهر لك حالة الشحنة فورًا.</p>
+          <p class="mt-2 text-gray-600">ادخل رقم التتبع في قسم "تتبع شحنة" وسيظهر لك حالة الشحنة وموقعها على الخريطة.</p>
         </details>
         <details class="mb-4 bg-white rounded shadow p-4">
           <summary class="font-semibold cursor-pointer">هل توجد خدمة توصيل في نفس اليوم؟</summary>
@@ -189,13 +243,20 @@
     </div>
   </section>
 
-  <!-- خريطة جوجل -->
+  <!-- خريطة جوجل (الريان شارع الشافي) -->
   <section id="map" class="py-12 bg-blue-50">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl md:text-3xl font-bold gradient-text mb-8 text-center">موقعنا على الخريطة</h2>
       <div class="flex justify-center">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.055642557237!2d51.53104068498794!3d25.28610698386301!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45c5e7e8e6bbf7%3A0x8a4b8d2a3a9e2c9b!2z2KfZhNiq2KfZhdi52Kkg2KfZhNio2KfZhNmF2Kkg2KfZhNmD2KfZhNmK2Kc!5e0!3m2!1sar!2sqa!4v1685026322290!5m2!1sar!2sqa"
-          width="100%" height="350" style="border:0; border-radius: 1rem; box-shadow:0 4px 24px #0001;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe
+          src="https://maps.google.com/maps?q=25.2525,51.3885&z=16&output=embed"
+          width="100%" height="350"
+          style="border:0; border-radius: 1rem; box-shadow:0 4px 24px #0001;"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="text-center mt-4 text-lg text-gray-700 font-semibold">
+        قطر – الريان – شارع الشافي
       </div>
     </div>
   </section>
@@ -220,7 +281,7 @@
       <h2 class="text-2xl md:text-3xl font-bold mb-6 gradient-text">تواصل معنا</h2>
       <div class="flex flex-col md:flex-row justify-center items-center gap-8">
         <div>
-          <a href="tel:97433556419" class="text-2xl text-green-800 font-bold hover:underline">+974 3355 6419</a>
+          <a href="tel:+97433556419" class="text-2xl text-green-800 font-bold hover:underline">+974 3355 6419</a>
           <p class="text-gray-600 mt-2">اتصال مباشر / واتساب</p>
         </div>
         <div>
@@ -228,7 +289,7 @@
           <p class="text-gray-600 mt-2">البريد الإلكتروني</p>
         </div>
         <div>
-          <p class="text-lg text-gray-700">الدوحة، قطر</p>
+          <p class="text-lg text-gray-700">قطر – الريان – شارع الشافي</p>
           <p class="text-gray-600 mt-2">العنوان</p>
         </div>
       </div>
@@ -236,7 +297,7 @@
         <a href="https://wa.me/97433556419" target="_blank" title="واتساب">
           <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="icon" alt="واتساب" />
         </a>
-        <a href="tel:97433556419" title="اتصال">
+        <a href="tel:+97433556419" title="اتصال">
           <img src="https://cdn-icons-png.flaticon.com/512/455/455705.png" class="icon" alt="اتصال" />
         </a>
         <a href="mailto:info@wasil-logistics.qa" title="ايميل">
@@ -250,6 +311,43 @@
   <a href="https://wa.me/97433556419" target="_blank" class="floating-btn bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg flex items-center gap-2 animate-bounce">
     <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-6 h-6" alt="واتساب" /> تواصل سريع
   </a>
+
+  <!-- بوت دردشة ذكاء اصطناعي وهمي (واجهة فقط) -->
+  <div class="chatbot-btn" id="botBtn" title="مساعد الذكاء الاصطناعي">🤖</div>
+  <div class="chatbot-window" id="botWindow">
+    <div class="chatbot-header">مساعد واصل الذكي</div>
+    <div class="chatbot-messages" id="botMsgs">
+      <div>👋 مرحباً! أنا مساعد واصل الذكي.<br>اسألني عن تتبع الشحنة، الخدمات، أو أي استفسار.</div>
+    </div>
+    <form class="chatbot-input" onsubmit="sendBotMsg(event)">
+      <input type="text" id="botInput" placeholder="اكتب سؤالك..." autocomplete="off" />
+      <button type="submit">إرسال</button>
+    </form>
+  </div>
+  <script>
+    // إظهار/إخفاء بوت الدردشة
+    document.getElementById('botBtn').onclick = function(){
+      let win = document.getElementById('botWindow');
+      win.style.display = win.style.display == 'flex' ? 'none' : 'flex';
+    }
+    // محاكاة ردود الذكاء الاصطناعي
+    function sendBotMsg(e){
+      e.preventDefault();
+      let input = document.getElementById('botInput');
+      let msg = input.value.trim();
+      if(!msg) return;
+      let msgs = document.getElementById('botMsgs');
+      msgs.innerHTML += `<div style="text-align:right;margin:8px 0;"><b>أنت:</b> ${msg}</div>`;
+      // ردود ذكية وهمية (يمكن ربطها بـAPI حقيقي لاحقاً)
+      let reply = "أعتذر، لم أفهم سؤالك. جرب سؤال آخر أو تواصل مع الدعم.";
+      if(msg.includes("تتبع") || msg.includes("شحنة")) reply = "يمكنك تتبع شحنتك من قسم 'تتبع شحنة' في الأعلى.";
+      if(msg.includes("الخدمات")) reply = "نقدم شحن محلي سريع، توصيل فوري، وحلول أعمال متكاملة.";
+      if(msg.includes("سعر") || msg.includes("عرض")) reply = "يمكنك طلب عرض سعر من قسم 'اطلب عرض سعر'.";
+      if(msg.includes("رقم") || msg.includes("اتصال")) reply = "رقمنا: ‎+974 3355 6419";
+      setTimeout(()=>{msgs.innerHTML += `<div style="text-align:left;margin:8px 0;color:#22c55e;"><b>المساعد:</b> ${reply}</div>`; msgs.scrollTop = msgs.scrollHeight;}, 600);
+      input.value = "";
+    }
+  </script>
 
   <!-- تذييل -->
   <footer class="bg-gradient-to-r from-green-200 to-blue-200 py-6 mt-12 text-center">
