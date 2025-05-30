@@ -10,112 +10,28 @@
     body { font-family: 'Cairo', sans-serif; background: #f8fafc; color: #1e293b; }
     .gradient-text { background: linear-gradient(90deg, #2563eb, #22c55e); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .service-card:hover { transform: translateY(-6px) scale(1.04); box-shadow: 0 12px 20px rgba(34,197,94,0.12); transition: all 0.3s; }
-    .floating-btn, .ai-btn {
-      position: fixed;
-      left: 16px;
-      z-index: 999;
-    }
+    .floating-btn, .ai-btn { position: fixed; left: 16px; z-index: 999; }
     .floating-btn { bottom: 16px; }
-    .ai-btn {
-      bottom: 70px;
-      background: #2563eb;
-      color: #fff;
-      border-radius: 999px;
-      width: 130px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      font-weight: bold;
-      box-shadow: 0 4px 16px #0002;
-      cursor: pointer;
-      transition: background 0.2s;
-      gap: 0.5rem;
-      border: none;
-    }
+    .ai-btn { bottom: 70px; background: #2563eb; color: #fff; border-radius: 999px; width: 130px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: bold; box-shadow: 0 4px 16px #0002; cursor: pointer; transition: background 0.2s; gap: 0.5rem; border: none; }
     .ai-btn:hover { background: #22c55e; }
     .contact-icon { width: 24px; height: 24px; }
     .feature-icon { width: 24px; height: 24px; }
     .container { max-width: 1200px; }
-    .hero-bg {
-      background: linear-gradient(rgba(0,0,0,0.55),rgba(37,99,235,0.18)), url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
+    .hero-bg { background: linear-gradient(rgba(0,0,0,0.55),rgba(37,99,235,0.18)), url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80'); background-size: cover; background-position: center; background-repeat: no-repeat; }
     @media (max-width: 640px) {
       .contact-icon, .feature-icon { width: 18px; height: 18px; }
       .ai-btn { width: 90px; height: 32px; font-size: 0.85rem; }
     }
-    .chatbot-window {
-      position: fixed;
-      left: 16px;
-      bottom: 120px;
-      z-index: 1000;
-      width: 320px;
-      max-width: 95vw;
-      background: #fff;
-      border-radius: 1rem;
-      box-shadow: 0 8px 32px #0004;
-      overflow: hidden;
-      display: none;
-      flex-direction: column;
-    }
-    .chatbot-header {
-      background: linear-gradient(90deg, #2563eb, #22c55e);
-      color: #fff;
-      padding: 1rem;
-      font-weight: bold;
-      font-size: 1.1rem;
-    }
-    .chatbot-messages {
-      padding: 1rem;
-      height: 200px;
-      overflow-y: auto;
-      font-size: 1rem;
-    }
-    .chatbot-input {
-      display: flex;
-      border-top: 1px solid #eee;
-    }
-    .chatbot-input input {
-      flex: 1;
-      border: none;
-      padding: 0.75rem;
-      font-size: 1rem;
-      outline: none;
-    }
-    .chatbot-input button {
-      background: #22c55e;
-      color: #fff;
-      border: none;
-      padding: 0 1.5rem;
-      font-size: 1.2rem;
-      cursor: pointer;
-    }
-    @media (max-width: 500px) {
-      .chatbot-window { width: 98vw; left: 1vw; }
-    }
-    .marquee {
-      width: 100vw;
-      overflow: hidden;
-      background: linear-gradient(90deg, #e0f2fe 0%, #bbf7d0 100%);
-      color: #2563eb;
-      font-weight: bold;
-      font-size: 1.1rem;
-      white-space: nowrap;
-      box-shadow: 0 2px 16px #0001;
-    }
-    .marquee span {
-      display: inline-block;
-      padding-left: 100vw;
-      animation: marquee 18s linear infinite;
-    }
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-100vw); }
-    }
+    .chatbot-window { position: fixed; left: 16px; bottom: 120px; z-index: 1000; width: 320px; max-width: 95vw; background: #fff; border-radius: 1rem; box-shadow: 0 8px 32px #0004; overflow: hidden; display: none; flex-direction: column; }
+    .chatbot-header { background: linear-gradient(90deg, #2563eb, #22c55e); color: #fff; padding: 1rem; font-weight: bold; font-size: 1.1rem; }
+    .chatbot-messages { padding: 1rem; height: 200px; overflow-y: auto; font-size: 1rem; }
+    .chatbot-input { display: flex; border-top: 1px solid #eee; }
+    .chatbot-input input { flex: 1; border: none; padding: 0.75rem; font-size: 1rem; outline: none; }
+    .chatbot-input button { background: #22c55e; color: #fff; border: none; padding: 0 1.5rem; font-size: 1.2rem; cursor: pointer; }
+    @media (max-width: 500px) { .chatbot-window { width: 98vw; left: 1vw; } }
+    .marquee { width: 100vw; overflow: hidden; background: linear-gradient(90deg, #e0f2fe 0%, #bbf7d0 100%); color: #2563eb; font-weight: bold; font-size: 1.1rem; white-space: nowrap; box-shadow: 0 2px 16px #0001; }
+    .marquee span { display: inline-block; padding-left: 100vw; animation: marquee 18s linear infinite; }
+    @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100vw); } }
     .counter { font-size:2.2rem; color:#22c55e; font-weight:bold; }
   </style>
 </head>
@@ -138,7 +54,7 @@
         <a href="#about" class="hover:text-green-600 transition">من نحن</a>
         <a href="#features" class="hover:text-green-600 transition">المزايا</a>
         <a href="#gallery" class="hover:text-green-600 transition">المعرض</a>
-        <a href="#feedback" class="hover:text-green-600 transition">ارسل رأيك</a>
+        <a href="#feedback" class="hover:text-green-600 transition">اقتراحك</a>
         <a href="#contact" class="hover:text-green-600 transition">تواصل</a>
       </nav>
       <a href="https://wa.me/97471161164" target="_blank"
@@ -146,12 +62,7 @@
     </div>
   </header>
 
-  <!-- إشعار ترحيبي -->
-  <div class="bg-gradient-to-r from-green-100 to-blue-100 text-center py-2 text-lg text-blue-900 font-semibold shadow-sm">
-    مرحبًا بك في واصل لوجستيك – أسرع شحن في قطر!
-  </div>
-
-  <!-- بانر ترحيبي بخلفية كونتينرات بحرية -->
+  <!-- بانر ترحيبي بخلفية كونتينرات بحرية وعداد شحنات حي -->
   <section id="home" class="hero-bg py-16 md:py-24 text-center relative overflow-hidden px-4">
     <div class="container mx-auto max-w-3xl relative z-10">
       <h2 class="text-4xl md:text-5xl font-extrabold mb-4 leading-tight" style="color:#fff;text-shadow:0 3px 16px #000a;">شحنك في أمان مع واصل لوجستيك</h2>
@@ -159,16 +70,12 @@
       <a href="#quote" class="bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-green-700 transition">اطلب عرض سعر</a>
       <div class="flex justify-center gap-10 mt-10">
         <div>
-          <div class="counter" id="clientsCount">0</div>
-          <div class="text-white font-bold">عميل سعيد</div>
-        </div>
-        <div>
           <div class="counter" id="shipmentsCount">0</div>
           <div class="text-white font-bold">شحنة تم تسليمها</div>
         </div>
       </div>
       <script>
-        // عداد العملاء والشحنات
+        // عداد الشحنات
         function animateCounter(id, target) {
           let el = document.getElementById(id), val = 0;
           let step = Math.ceil(target / 60);
@@ -178,7 +85,6 @@
             el.textContent = val;
           }, 20);
         }
-        animateCounter('clientsCount', 2500);
         animateCounter('shipmentsCount', 12000);
       </script>
     </div>
@@ -280,13 +186,13 @@
     </div>
   </section>
 
-  <!-- فورمة فيدباك العملاء ترسل للواتساب -->
+  <!-- فورمة اقتراح أو ملاحظة ترسل للواتساب -->
   <section id="feedback" class="py-10" style="background: linear-gradient(90deg, #2563eb22 0%, #22c55e22 100%);">
     <div class="container mx-auto px-4 max-w-xl">
-      <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color:#194185;">شاركنا رأيك</h2>
+      <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color:#194185;">شاركنا اقتراحك أو ملاحظتك</h2>
       <form id="feedbackForm" class="bg-white rounded-xl shadow p-8 flex flex-col gap-5 text-center">
         <input type="text" id="fbName" placeholder="اسمك (اختياري)" class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
-        <textarea id="fbMsg" required placeholder="اكتب رأيك أو اقتراحك هنا..." class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200"></textarea>
+        <textarea id="fbMsg" required placeholder="اكتب اقتراحك أو ملاحظتك هنا..." class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200"></textarea>
         <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">إرسال</button>
         <div id="fbResult" class="mt-2 text-green-700 font-bold"></div>
       </form>
@@ -297,7 +203,7 @@
           var msg = document.getElementById('fbMsg').value.trim();
           var waMsg = encodeURIComponent((name ? "الاسم: "+name+"\n" : "") + "الرسالة: "+msg);
           window.open("https://wa.me/97471161164?text="+waMsg, "_blank");
-          document.getElementById('fbResult').innerHTML = "✅ سيتم تحويلك للواتساب لإرسال رأيك مباشرة.";
+          document.getElementById('fbResult').innerHTML = "✅ سيتم تحويلك للواتساب لإرسال اقتراحك مباشرة.";
         }
       </script>
     </div>
@@ -434,7 +340,7 @@
       <a href="#about" class="hover:underline">من نحن</a>
       <a href="#features" class="hover:underline">المزايا</a>
       <a href="#gallery" class="hover:underline">المعرض</a>
-      <a href="#feedback" class="hover:underline">ارسل رأيك</a>
+      <a href="#feedback" class="hover:underline">اقتراحك</a>
       <a href="#contact" class="hover:underline">تواصل</a>
     </div>
   </footer>
