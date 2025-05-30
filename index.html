@@ -17,40 +17,43 @@
       z-index: 999;
     }
     .ai-btn {
-      left: auto;
-      right: 16px;
+      left: 16px;
+      bottom: 80px;
       background: #2563eb;
       color: #fff;
-      border-radius: 50%;
-      width: 54px;
-      height: 54px;
+      border-radius: 999px;
+      width: 150px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 1.1rem;
+      font-weight: bold;
       box-shadow: 0 4px 16px #0002;
       cursor: pointer;
-      bottom: 90px;
       transition: background 0.2s;
+      gap: 0.5rem;
+      border: none;
     }
     .ai-btn:hover { background: #22c55e; }
-    .contact-icon { width: 28px; height: 28px; }
-    .feature-icon { width: 28px; height: 28px; }
+    .contact-icon { width: 26px; height: 26px; }
+    .feature-icon { width: 26px; height: 26px; }
     .container { max-width: 1200px; }
     .hero-bg {
-      background: linear-gradient(rgba(0,0,0,0.48),rgba(37,99,235,0.20)), url('https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=1200&q=80');
+      background: linear-gradient(rgba(0,0,0,0.48),rgba(37,99,235,0.15)), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
     @media (max-width: 640px) {
-      .contact-icon, .feature-icon { width: 22px; height: 22px; }
+      .contact-icon, .feature-icon { width: 19px; height: 19px; }
       .hero-bg { background-position: 60% 50%; }
+      .ai-btn { width: 110px; height: 36px; font-size: 0.95rem; }
     }
     .chatbot-window {
       position: fixed;
-      right: 16px;
-      bottom: 160px;
+      left: 16px;
+      bottom: 130px;
       z-index: 1000;
       width: 320px;
       max-width: 95vw;
@@ -94,7 +97,7 @@
       cursor: pointer;
     }
     @media (max-width: 500px) {
-      .chatbot-window { width: 98vw; right: 1vw; }
+      .chatbot-window { width: 98vw; left: 1vw; }
     }
   </style>
 </head>
@@ -250,7 +253,7 @@
           class="rounded-xl shadow hover:scale-105 transition object-cover h-32 w-full" />
         <img src="https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?auto=format&fit=crop&w=400&q=80" alt="شحن جوي"
           class="rounded-xl shadow hover:scale-105 transition object-cover h-32 w-full" />
-        <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=400&q=80" alt="كونتينرات لوجستية"
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="كونتينرات لوجستية"
           class="rounded-xl shadow hover:scale-105 transition object-cover h-32 w-full" />
       </div>
     </div>
@@ -342,15 +345,18 @@
   </a>
 
   <!-- زر ذكاء اصطناعي عائم -->
-  <div class="ai-btn" id="botBtn" title="تواصل مع الذكاء الاصطناعي">🤖</div>
+  <button class="ai-btn" id="botBtn" title="Smart Assist">
+    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+    Smart Assist
+  </button>
   <div class="chatbot-window" id="botWindow">
-    <div class="chatbot-header">مساعد واصل الذكي</div>
+    <div class="chatbot-header">Smart Assist</div>
     <div class="chatbot-messages" id="botMsgs">
-      <div>👋 مرحباً! أنا مساعد واصل الذكي.<br>اسألني عن تتبع الشحنة، الخدمات، أو أي استفسار.</div>
+      <div>👋 Hello! I am your smart assistant.<br>Ask me about tracking, services, or any question.</div>
     </div>
     <form class="chatbot-input" onsubmit="sendBotMsg(event)">
-      <input type="text" id="botInput" placeholder="اكتب سؤالك..." autocomplete="off" />
-      <button type="submit">إرسال</button>
+      <input type="text" id="botInput" placeholder="Type your question..." autocomplete="off" />
+      <button type="submit">Send</button>
     </form>
   </div>
   <script>
@@ -364,13 +370,13 @@
       let msg = input.value.trim();
       if(!msg) return;
       let msgs = document.getElementById('botMsgs');
-      msgs.innerHTML += `<div style="text-align:right;margin:8px 0;"><b>أنت:</b> ${msg}</div>`;
-      let reply = "أعتذر، لم أفهم سؤالك. جرب سؤال آخر أو تواصل مع الدعم.";
-      if(msg.includes("تتبع") || msg.includes("شحنة")) reply = "يمكنك تتبع شحنتك من قسم 'تتبع شحنة' في الأعلى.";
-      if(msg.includes("الخدمات")) reply = "نقدم شحن بري، شحن بحري، شحن جوي، وحلول ذكاء اصطناعي.";
-      if(msg.includes("سعر") || msg.includes("عرض")) reply = "يمكنك طلب عرض سعر من قسم 'اطلب عرض سعر'.";
-      if(msg.includes("رقم") || msg.includes("اتصال")) reply = "رقمنا: ‎+974 7116 1164";
-      setTimeout(()=>{msgs.innerHTML += `<div style="text-align:left;margin:8px 0;color:#22c55e;"><b>المساعد:</b> ${reply}</div>`; msgs.scrollTop = msgs.scrollHeight;}, 600);
+      msgs.innerHTML += `<div style="text-align:right;margin:8px 0;"><b>You:</b> ${msg}</div>`;
+      let reply = "Sorry, I didn't understand. Please try again or contact support.";
+      if(msg.includes("track") || msg.includes("shipment")) reply = "You can track your shipment from the 'تتبع شحنة' section above.";
+      if(msg.includes("service")) reply = "We offer land, sea, air shipping, and smart logistics solutions.";
+      if(msg.includes("price") || msg.includes("quote")) reply = "You can request a quote from the 'اطلب عرض سعر' section.";
+      if(msg.includes("number") || msg.includes("contact")) reply = "Our number: +974 7116 1164";
+      setTimeout(()=>{msgs.innerHTML += `<div style="text-align:left;margin:8px 0;color:#22c55e;"><b>Smart Assist:</b> ${reply}</div>`; msgs.scrollTop = msgs.scrollHeight;}, 600);
       input.value = "";
     }
   </script>
