@@ -4,9 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>واصل لوجستيك | حلول الشحن الذكية في قطر</title>
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Cairo -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap">
   <style>
     body { font-family: 'Cairo', sans-serif; }
@@ -28,9 +26,11 @@
       </div>
       <nav class="flex gap-4 md:gap-8 mt-3 md:mt-0">
         <a href="#home" class="hover:text-blue-700 font-medium transition">الرئيسية</a>
+        <a href="#track" class="hover:text-blue-700 font-medium transition">تتبع شحنة</a>
         <a href="#services" class="hover:text-blue-700 font-medium transition">الخدمات</a>
         <a href="#about" class="hover:text-blue-700 font-medium transition">من نحن</a>
         <a href="#features" class="hover:text-blue-700 font-medium transition">المزايا</a>
+        <a href="#map" class="hover:text-blue-700 font-medium transition">الخريطة</a>
         <a href="#contact" class="hover:text-blue-700 font-medium transition">تواصل</a>
       </nav>
       <a href="https://wa.me/97433556419" target="_blank" class="hidden md:inline-block bg-gradient-to-l from-green-400 to-blue-400 text-white px-5 py-2 rounded-full shadow hover:scale-105 transition">واتساب مباشر</a>
@@ -44,10 +44,33 @@
       <p class="text-lg md:text-2xl text-gray-700 mb-8">شحن سريع، تتبع مباشر، دعم متواصل، وكل شيء بضغطة زر!</p>
       <a href="#quote" class="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold shadow-lg hover:bg-blue-700 transition">اطلب عرض سعر</a>
     </div>
-    <!-- خلفية دوائر متداخلة عصرية -->
     <div class="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
       <div class="absolute w-72 h-72 bg-blue-200 rounded-full opacity-30 -top-24 -left-24 blur-2xl"></div>
       <div class="absolute w-96 h-96 bg-green-200 rounded-full opacity-20 -bottom-32 -right-32 blur-2xl"></div>
+    </div>
+  </section>
+
+  <!-- تتبع شحنة -->
+  <section id="track" class="py-16 bg-white">
+    <div class="container mx-auto px-4 max-w-lg">
+      <h2 class="text-3xl font-bold gradient-text mb-6 text-center">تتبع شحنتك</h2>
+      <form id="trackForm" class="bg-gradient-to-l from-green-50 to-blue-50 rounded-xl shadow p-8 flex flex-col gap-5 text-center">
+        <input type="text" id="trackNumber" required placeholder="أدخل رقم التتبع" class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200 text-center">
+        <button type="submit" class="bg-gradient-to-l from-green-400 to-blue-400 text-white px-6 py-2 rounded-full font-semibold hover:scale-105 transition">تتبع الآن</button>
+        <div id="trackResult" class="mt-4 text-green-700 font-bold"></div>
+      </form>
+      <script>
+        document.getElementById('trackForm').onsubmit = function(e) {
+          e.preventDefault();
+          var num = document.getElementById('trackNumber').value.trim();
+          var result = document.getElementById('trackResult');
+          if(num.length >= 6){
+            result.innerHTML = "تم استلام رقم التتبع <span class='text-blue-700'>" + num + "</span>.<br>سيتم التواصل معك قريبًا حول حالة الشحنة.";
+          } else {
+            result.innerHTML = "<span class='text-red-600'>رقم التتبع غير صحيح.</span>";
+          }
+        }
+      </script>
     </div>
   </section>
 
@@ -56,19 +79,16 @@
     <div class="container mx-auto px-4">
       <h2 class="text-3xl font-bold text-center mb-10 gradient-text">خدماتنا</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- خدمة 1 -->
         <div class="service-card bg-gradient-to-tr from-blue-50 to-green-50 rounded-2xl p-7 shadow-lg transition cursor-pointer border border-blue-100">
           <img src="https://cdn-icons-png.flaticon.com/512/1046/1046857.png" alt="شحن محلي" class="icon mx-auto mb-4">
           <h3 class="text-xl font-bold mb-2">شحن محلي سريع</h3>
           <p class="text-gray-600">توصيل الطرود داخل قطر خلال ساعات مع تتبع فوري.</p>
         </div>
-        <!-- خدمة 2 -->
         <div class="service-card bg-gradient-to-tr from-blue-50 to-green-50 rounded-2xl p-7 shadow-lg transition cursor-pointer border border-blue-100">
           <img src="https://cdn-icons-png.flaticon.com/512/1046/1046853.png" alt="توصيل فوري" class="icon mx-auto mb-4">
           <h3 class="text-xl font-bold mb-2">توصيل فوري عند الطلب</h3>
           <p class="text-gray-600">خدمة التوصيل الفوري للطلبات العاجلة والمتاجر الإلكترونية.</p>
         </div>
-        <!-- خدمة 3 -->
         <div class="service-card bg-gradient-to-tr from-blue-50 to-green-50 rounded-2xl p-7 shadow-lg transition cursor-pointer border border-blue-100">
           <img src="https://cdn-icons-png.flaticon.com/512/1046/1046864.png" alt="خدمات أعمال" class="icon mx-auto mb-4">
           <h3 class="text-xl font-bold mb-2">حلول أعمال متكاملة</h3>
@@ -77,6 +97,64 @@
       </div>
       <div class="mt-10 text-center">
         <button onclick="alert('لإضافة خدمة جديدة، انسخ بطاقة من الكود وعدلها بنفسك بسهولة!')" class="bg-gradient-to-l from-green-400 to-blue-400 text-white px-6 py-2 rounded-full shadow hover:scale-105 transition">+ أضف خدمة جديدة</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- شهادات العملاء -->
+  <section id="testimonials" class="py-16 bg-blue-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-10 gradient-text text-center">آراء عملائنا</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow p-6 text-center">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-16 h-16 mx-auto rounded-full mb-3" alt="عميل">
+          <p class="text-gray-700 mb-2">"خدمة سريعة واحترافية جدًا. الشحنة وصلتني في نفس اليوم!"</p>
+          <span class="font-bold text-green-700">محمد - الدوحة</span>
+        </div>
+        <div class="bg-white rounded-xl shadow p-6 text-center">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-16 h-16 mx-auto rounded-full mb-3" alt="عميلة">
+          <p class="text-gray-700 mb-2">"دعم العملاء ممتاز جدًا، والتتبع كان دقيق."</p>
+          <span class="font-bold text-green-700">سارة - الريان</span>
+        </div>
+        <div class="bg-white rounded-xl shadow p-6 text-center">
+          <img src="https://randomuser.me/api/portraits/men/65.jpg" class="w-16 h-16 mx-auto rounded-full mb-3" alt="عميل">
+          <p class="text-gray-700 mb-2">"أنصح كل الشركات بالتعامل معهم. الأسعار مناسبة والخدمة متطورة."</p>
+          <span class="font-bold text-green-700">خالد - الوكرة</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- معرض صور -->
+  <section id="gallery" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-10 gradient-text text-center">معرض الصور</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <img src="https://images.unsplash.com/photo-1515165562835-c1fd1be1a9a2?auto=format&fit=crop&w=400&q=80" alt="صورة شحن" class="rounded-xl shadow hover:scale-105 transition">
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="شاحنة" class="rounded-xl shadow hover:scale-105 transition">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80" alt="تسليم طرود" class="rounded-xl shadow hover:scale-105 transition">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="مستودع" class="rounded-xl shadow hover:scale-105 transition">
+      </div>
+    </div>
+  </section>
+
+  <!-- الأسئلة الشائعة -->
+  <section id="faq" class="py-16 bg-blue-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-10 gradient-text text-center">الأسئلة الشائعة</h2>
+      <div class="max-w-2xl mx-auto">
+        <details class="mb-4 bg-white rounded shadow p-4">
+          <summary class="font-semibold cursor-pointer">كيف أتتبع شحنتي؟</summary>
+          <p class="mt-2 text-gray-600">ادخل رقم التتبع في قسم "تتبع شحنة" وسيظهر لك حالة الشحنة فورًا.</p>
+        </details>
+        <details class="mb-4 bg-white rounded shadow p-4">
+          <summary class="font-semibold cursor-pointer">هل توجد خدمة توصيل في نفس اليوم؟</summary>
+          <p class="mt-2 text-gray-600">نعم، نقدم خدمة التوصيل الفوري داخل معظم مناطق قطر.</p>
+        </details>
+        <details class="mb-4 bg-white rounded shadow p-4">
+          <summary class="font-semibold cursor-pointer">كيف أتواصل مع خدمة العملاء؟</summary>
+          <p class="mt-2 text-gray-600">يمكنك الاتصال أو التواصل عبر واتساب أو البريد الإلكتروني في قسم "تواصل معنا".</p>
+        </details>
       </div>
     </div>
   </section>
@@ -126,6 +204,17 @@
           <h4 class="font-semibold mb-2">دعم متواصل</h4>
           <p class="text-gray-600 text-sm">دعم فني عبر واتساب والهاتف ٢٤/٧.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- خريطة جوجل -->
+  <section id="map" class="py-16 bg-blue-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold gradient-text mb-8 text-center">موقعنا على الخريطة</h2>
+      <div class="flex justify-center">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3609.055642557237!2d51.53104068498794!3d25.28610698386301!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45c5e7e8e6bbf7%3A0x8a4b8d2a3a9e2c9b!2z2KfZhNiq2KfZhdi52Kkg2KfZhNio2KfZhNmF2Kkg2KfZhNmD2KfZhNmK2Kc!5e0!3m2!1sar!2sqa!4v1685026322290!5m2!1sar!2sqa"
+          width="100%" height="350" style="border:0; border-radius: 1rem; box-shadow:0 4px 24px #0001;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
   </section>
@@ -186,9 +275,11 @@
     <p class="text-gray-800 mb-2">&copy; 2025 واصل لوجستيك - جميع الحقوق محفوظة</p>
     <div class="flex justify-center gap-4 text-sm">
       <a href="#home" class="hover:underline">الرئيسية</a>
+      <a href="#track" class="hover:underline">تتبع شحنة</a>
       <a href="#services" class="hover:underline">الخدمات</a>
       <a href="#about" class="hover:underline">من نحن</a>
       <a href="#features" class="hover:underline">المزايا</a>
+      <a href="#map" class="hover:underline">الخريطة</a>
       <a href="#contact" class="hover:underline">تواصل</a>
     </div>
   </footer>
