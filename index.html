@@ -29,6 +29,8 @@
       .contact-icon { width: 14px; height: 14px;}
       .ai-btn { width: 70px; height: 26px; font-size: 0.75rem;}
     }
+    /* أيقونات أصغر */
+    .icon-sm { width: 28px; height: 28px;}
   </style>
 </head>
 <body>
@@ -71,23 +73,7 @@
     </div>
   </section>
 
-  <!-- كل الأقسام في المنتصف -->
   <main class="flex flex-col items-center justify-center">
-
-    <!-- من نحن -->
-    <section id="about" class="py-10 bg-white w-full flex justify-center">
-      <div class="container mx-auto px-4 flex flex-col items-center justify-center">
-        <h2 class="text-2xl md:text-3xl font-bold gradient-text mb-3 text-center">من نحن</h2>
-        <p class="text-lg text-gray-700 mb-4 text-center max-w-xl">
-          <b>واصل لوجستيك</b> شركة قطرية متخصصة في حلول الشحن الذكي واللوجستيات الحديثة. نستخدم أحدث التقنيات لنقدم لك أسرع وأدق خدمة شحن وتوصيل داخل قطر ودول الخليج والعالم، مع تغطية شاملة ودعم متواصل 24/7.
-        </p>
-        <ul class="list-disc pr-6 text-gray-600 text-base text-center mx-auto" style="display:inline-block;text-align:right;">
-          <li>شحن بري، بحري، جوي، وتخزين احترافي</li>
-          <li>تتبع ذكي، تقارير فورية، وتوصيات مخصصة لكل عميل</li>
-          <li>فريق عمل محترف وخدمة عملاء متواصلة</li>
-        </ul>
-      </div>
-    </section>
 
     <!-- خدماتنا -->
     <section id="services" class="py-10 bg-white w-full flex justify-center">
@@ -111,6 +97,38 @@
             <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="شحن بري" class="w-full h-32 object-cover rounded-lg mb-3"/>
             <h4 class="text-xl font-bold mb-1">الشحن البري</h4>
             <p class="text-gray-600 mb-2">شاحنات نقل بضائع وكونتينرات بين المدن ودول الخليج بأمان وسرعة.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- تواصل معنا في منتصف الشاشة -->
+    <section id="contact" class="py-10 bg-green-50 w-full flex justify-center">
+      <div class="container mx-auto text-center">
+        <h3 class="text-3xl font-semibold text-blue-800 mb-4">تواصل معنا</h3>
+        <p class="text-lg text-gray-700 mb-2">للتواصل أو الاستفسارات، اتصل بنا على:</p>
+        <p class="text-2xl text-green-800 font-bold mb-4">
+          <a href="tel:+97471161164" class="hover:underline">+97471161164</a>
+        </p>
+        <p class="text-lg text-gray-700 mb-2">العنوان: الريان - قطر</p>
+        <a href="https://wa.me/97471161164" target="_blank" class="inline-flex items-center gap-2 bg-green-600 text-white px-5 py-2 rounded-full font-bold shadow hover:bg-green-700 transition mt-4 mb-6">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-6 h-6" alt="واتساب" />
+          تواصل واتساب مباشر
+        </a>
+        <a href="https://maps.app.goo.gl/RqanSiSy4goiwc1H9" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-full font-bold shadow hover:bg-blue-700 transition mt-4 mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon-sm" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 12.414a4 4 0 10-1.414 1.414l4.243 4.243a1 1 0 001.414-1.414z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          موقع الشركة على الخريطة
+        </a>
+        <div class="my-6">
+          <iframe 
+            src="https://www.google.com/maps?q=25.252001,51.429810&hl=ar&z=15&output=embed" 
+            width="100%" height="320" style="border-radius:1rem;box-shadow:0 2px 12px #0001;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div class="text-center mt-2">
+            <a href="https://maps.app.goo.gl/RqanSiSy4goiwc1H9" target="_blank" class="text-blue-700 font-bold underline">افتح الموقع على Google Maps</a>
           </div>
         </div>
       </div>
@@ -146,63 +164,6 @@
             document.getElementById('opinionResult').innerHTML = "✅ سيتم تحويلك للواتساب لإرسال رأيك مباشرة.";
           }
         </script>
-      </div>
-    </section>
-
-    <!-- فورمة تواصل سريع -->
-    <section class="py-10 bg-blue-50 w-full flex justify-center">
-      <div class="container mx-auto max-w-2xl px-4 text-center">
-        <h2 class="text-2xl md:text-3xl font-bold mb-6 gradient-text">تواصل الآن للحصول على الخدمة</h2>
-        <form id="contactNowForm" class="bg-white rounded-xl shadow p-8 flex flex-col gap-5 text-center">
-          <input type="text" id="contactNowName" placeholder="اسمك" required class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
-          <input type="tel" id="contactNowPhone" placeholder="رقم الجوال" required class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
-          <textarea id="contactNowMsg" required placeholder="ما الخدمة المطلوبة؟" class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200"></textarea>
-          <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition">أرسل الآن</button>
-          <div id="contactNowResult" class="mt-2 text-green-700 font-bold"></div>
-        </form>
-        <script>
-          document.getElementById('contactNowForm').onsubmit = function(e){
-            e.preventDefault();
-            var name = document.getElementById('contactNowName').value.trim();
-            var phone = document.getElementById('contactNowPhone').value.trim();
-            var msg = document.getElementById('contactNowMsg').value.trim();
-            var waMsg = encodeURIComponent("طلب خدمة\nالاسم: "+name+"\nالجوال: "+phone+"\nالخدمة: "+msg);
-            window.open("https://wa.me/97471161164?text="+waMsg, "_blank");
-            document.getElementById('contactNowResult').innerHTML = "✅ سيتم تحويلك للواتساب لإكمال الطلب.";
-          }
-        </script>
-      </div>
-    </section>
-
-    <!-- تواصل معنا مع خريطة Google Maps -->
-    <section id="contact" class="py-10 bg-green-50 w-full flex justify-center">
-      <div class="container mx-auto text-center">
-        <h3 class="text-3xl font-semibold text-blue-800 mb-4">تواصل معنا</h3>
-        <p class="text-lg text-gray-700 mb-2">للتواصل أو الاستفسارات، اتصل بنا على:</p>
-        <p class="text-2xl text-green-800 font-bold mb-4">
-          <a href="tel:+97471161164" class="hover:underline">+97471161164</a>
-        </p>
-        <p class="text-lg text-gray-700 mb-2">العنوان: الريان - قطر</p>
-        <a href="https://wa.me/97471161164" target="_blank" class="inline-flex items-center gap-2 bg-green-600 text-white px-5 py-2 rounded-full font-bold shadow hover:bg-green-700 transition mt-4 mb-6">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" class="w-6 h-6" alt="واتساب" />
-          تواصل واتساب مباشر
-        </a>
-        <a href="https://maps.app.goo.gl/RqanSiSy4goiwc1H9" target="_blank" class="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-2 rounded-full font-bold shadow hover:bg-blue-700 transition mt-4 mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 12.414a4 4 0 10-1.414 1.414l4.243 4.243a1 1 0 001.414-1.414z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-          </svg>
-          موقع الشركة على الخريطة
-        </a>
-        <div class="my-6">
-          <iframe 
-            src="https://www.google.com/maps?q=25.252001,51.429810&hl=ar&z=15&output=embed" 
-            width="100%" height="320" style="border-radius:1rem;box-shadow:0 2px 12px #0001;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-          <div class="text-center mt-2">
-            <a href="https://maps.app.goo.gl/RqanSiSy4goiwc1H9" target="_blank" class="text-blue-700 font-bold underline">افتح الموقع على Google Maps</a>
-          </div>
-        </div>
       </div>
     </section>
 
