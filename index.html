@@ -115,7 +115,7 @@
         <a href="#about" class="hover:text-green-600 transition">من نحن</a>
         <a href="#features" class="hover:text-green-600 transition">المزايا</a>
         <a href="#gallery" class="hover:text-green-600 transition">المعرض</a>
-        <a href="#reviews" class="hover:text-green-600 transition">ارسل رأيك</a>
+        <a href="#feedback" class="hover:text-green-600 transition">ارسل رأيك</a>
         <a href="#contact" class="hover:text-green-600 transition">تواصل</a>
       </nav>
       <a href="https://wa.me/97471161164" target="_blank"
@@ -146,7 +146,6 @@
         <ul class="list-disc pr-6 text-gray-600 text-base">
           <li>شحن بري، بحري، جوي، وحلول متكاملة للشركات والأفراد</li>
           <li>تتبع ذكي، تقارير فورية، وتوصيات مخصصة لكل عميل</li>
-          <li>شهادات جودة واعتمادات لوجستية دولية</li>
         </ul>
       </div>
     </div>
@@ -229,17 +228,26 @@
     </div>
   </section>
 
-  <!-- قسم اكتب رأيك (فورم العملاء) -->
-  <section id="reviews" class="py-10" style="background: linear-gradient(90deg, #2563eb22 0%, #22c55e22 100%);">
+  <!-- فورمة فيدباك العملاء ترسل للواتساب -->
+  <section id="feedback" class="py-10" style="background: linear-gradient(90deg, #2563eb22 0%, #22c55e22 100%);">
     <div class="container mx-auto px-4 max-w-xl">
       <h2 class="text-2xl md:text-3xl font-bold mb-6" style="color:#194185;">شاركنا رأيك</h2>
-      <form class="bg-white rounded-xl shadow p-8 flex flex-col gap-5 text-center"
-        onsubmit="event.preventDefault();document.getElementById('reviewMsg').innerHTML='✅ تم استلام رأيك بنجاح! شكراً لك.';">
-        <input type="text" required placeholder="اسمك (اختياري)" class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
-        <textarea required placeholder="اكتب رأيك أو اقتراحك هنا..." class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200"></textarea>
+      <form id="feedbackForm" class="bg-white rounded-xl shadow p-8 flex flex-col gap-5 text-center">
+        <input type="text" id="fbName" placeholder="اسمك (اختياري)" class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200" />
+        <textarea id="fbMsg" required placeholder="اكتب رأيك أو اقتراحك هنا..." class="border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-200"></textarea>
         <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition">إرسال</button>
-        <div id="reviewMsg" class="mt-2 text-green-700 font-bold"></div>
+        <div id="fbResult" class="mt-2 text-green-700 font-bold"></div>
       </form>
+      <script>
+        document.getElementById('feedbackForm').onsubmit = function(e){
+          e.preventDefault();
+          var name = document.getElementById('fbName').value.trim();
+          var msg = document.getElementById('fbMsg').value.trim();
+          var waMsg = encodeURIComponent((name ? "الاسم: "+name+"\n" : "") + "الرسالة: "+msg);
+          window.open("https://wa.me/97471161164?text="+waMsg, "_blank");
+          document.getElementById('fbResult').innerHTML = "✅ سيتم تحويلك للواتساب لإرسال رأيك مباشرة.";
+        }
+      </script>
     </div>
   </section>
 
@@ -255,18 +263,18 @@
         </div>
         <div class="bg-gradient-to-bl from-blue-50 to-green-50 rounded-xl p-5 shadow flex flex-col items-center">
           <img src="https://cdn-icons-png.flaticon.com/512/190/190406.png" alt="أمان" class="feature-icon mb-2" />
-          <h4 class="font-semibold mb-1 text-base">أمان وتقنية</h4>
+          <h4 class="font-semibold mb-1 text-base">تتبع ذكي وإشعارات تلقائية</h4>
           <p class="text-gray-600 text-xs">تتبع مباشر، إشعارات لحظية، وتغليف ذكي.</p>
         </div>
         <div class="bg-gradient-to-bl from-blue-50 to-green-50 rounded-xl p-5 shadow flex flex-col items-center">
-          <img src="https://cdn-icons-png.flaticon.com/512/190/190422.png" alt="أسعار" class="feature-icon mb-2" />
-          <h4 class="font-semibold mb-1 text-base">أسعار منافسة</h4>
-          <p class="text-gray-600 text-xs">عروض شهرية وخصومات للشركات والمتاجر.</p>
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="ذكاء اصطناعي" class="feature-icon mb-2" />
+          <h4 class="font-semibold mb-1 text-base">توصيات وخدمات ذكية</h4>
+          <p class="text-gray-600 text-xs">اقتراح أفضل خدمة بناءً على شحنتك ووجهتك.</p>
         </div>
         <div class="bg-gradient-to-bl from-blue-50 to-green-50 rounded-xl p-5 shadow flex flex-col items-center">
-          <img src="https://cdn-icons-png.flaticon.com/512/190/190423.png" alt="دعم" class="feature-icon mb-2" />
-          <h4 class="font-semibold mb-1 text-base">دعم متواصل</h4>
-          <p class="text-gray-600 text-xs">دعم فني عبر واتساب والهاتف ٢٤/٧.</p>
+          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712045.png" alt="لوحة تحكم" class="feature-icon mb-2" />
+          <h4 class="font-semibold mb-1 text-base">لوحة تحكم للعميل</h4>
+          <p class="text-gray-600 text-xs">سجل شحناتك، تقييم الخدمة، وتنبيهات ذكية.</p>
         </div>
       </div>
     </div>
@@ -374,7 +382,7 @@
       <a href="#about" class="hover:underline">من نحن</a>
       <a href="#features" class="hover:underline">المزايا</a>
       <a href="#gallery" class="hover:underline">المعرض</a>
-      <a href="#reviews" class="hover:underline">ارسل رأيك</a>
+      <a href="#feedback" class="hover:underline">ارسل رأيك</a>
       <a href="#contact" class="hover:underline">تواصل</a>
     </div>
   </footer>
