@@ -1,0 +1,95 @@
+import React from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Truck, Plane, Ship, CheckCircle } from "lucide-react";
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-green-100 to-blue-100 text-gray-800 p-4">
+      <header className="text-center py-10">
+        <h1 className="text-4xl font-bold text-white drop-shadow-md">شركة الريان للشحن</h1>
+        <p className="text-xl text-white mt-2">من الطبيعة إلى باب بيتك</p>
+      </header>
+
+      <nav className="flex justify-center gap-6 mb-8 text-lg font-medium">
+        <a href="#features">المزايا</a>
+        <a href="#track">تتبع شحنتك</a>
+        <a href="#contact">تواصل معنا</a>
+        <a href="#options">الخيارات</a>
+      </nav>
+
+      <section id="services" className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12">
+        <Card>
+          <CardContent className="p-4 flex flex-col items-center">
+            <Plane className="w-12 h-12 text-blue-600 mb-2" />
+            <h3 className="text-xl font-semibold mb-1">الشحن الجوي</h3>
+            <p>خدمات شحن جوي آمنة وسريعة إلى جميع أنحاء العالم.</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4 flex flex-col items-center">
+            <Ship className="w-12 h-12 text-blue-600 mb-2" />
+            <h3 className="text-xl font-semibold mb-1">الشحن البحري</h3>
+            <p>نقل بضائع بكميات كبيرة عبر أفضل الخطوط البحرية.</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4 flex flex-col items-center">
+            <Truck className="w-12 h-12 text-green-600 mb-2" />
+            <h3 className="text-xl font-semibold mb-1">الشحن البري</h3>
+            <p>خدمة شحن بري مرنة وآمنة داخل وخارج قطر.</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4 flex flex-col items-center">
+            <CheckCircle className="w-12 h-12 text-green-600 mb-2" />
+            <h3 className="text-xl font-semibold mb-1">التخليص الجمركي</h3>
+            <p>خبراء في إنهاء إجراءات الجمارك بسرعة واحترافية.</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent className="p-4 flex flex-col items-center">
+            <CheckCircle className="w-12 h-12 text-green-600 mb-2" />
+            <h3 className="text-xl font-semibold mb-1">خدمات لوجستية متكاملة</h3>
+            <p>حلول شاملة لتلبية كافة متطلبات الشحن والتوصيل.</p>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section id="reviews" className="mb-12">
+        <h2 className="text-2xl font-bold text-center mb-4">آراء العملاء</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <Card>
+            <CardContent className="p-4">
+              <p>"خدمة ممتازة وسرعة في التوصيل. أوصي بها للجميع."</p>
+              <p className="mt-2 font-semibold text-right">- محمد</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <p>"تعامل احترافي وسهولة في تتبع الشحنة، شكراً لكم."</p>
+              <p className="mt-2 font-semibold text-right">- فاطمة</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <p>"أفضل شركة شحن تعاملت معها. فريق رائع وخدمة مميزة."</p>
+              <p className="mt-2 font-semibold text-right">- أحمد</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <p>"أنصح الجميع بالتعامل مع شركة الريان. سلاسة وسرعة وخدمة محترمة."</p>
+              <p className="mt-2 font-semibold text-right">- سارة</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <footer id="contact" className="text-center py-6 border-t border-gray-300">
+        <p>© 2025 شركة الريان للشحن - الريان، قطر</p>
+        <p>للتواصل: +97433556419</p>
+      </footer>
+    </div>
+  );
+}
